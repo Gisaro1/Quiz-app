@@ -1,0 +1,246 @@
+{
+  "title": "Dopamine Nation - Quiz",
+  "author": "Dr. Anna Lembke",
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the main subject of 'Dopamine Nation' by Dr. Anna Lembke?",
+      "options": [
+        "The science of happiness",
+        "Finding balance in an age of indulgence and addiction",
+        "The history of dopamine research",
+        "How to increase productivity"
+      ],
+      "answer": "Finding balance in an age of indulgence and addiction",
+      "explanation": "The book explores how modern society's overabundance of pleasures leads to addiction and how to find balance."
+    },
+    {
+      "id": 2,
+      "question": "What neurotransmitter is central to the book's theme?",
+      "options": [
+        "Serotonin",
+        "Oxytocin",
+        "Dopamine",
+        "Cortisol"
+      ],
+      "answer": "Dopamine",
+      "explanation": "Dopamine is the brain chemical associated with pleasure, motivation, and reward — the core focus of the book."
+    },
+    {
+      "id": 3,
+      "question": "What metaphor does Dr. Lembke use to describe the balance between pleasure and pain?",
+      "options": [
+        "A seesaw",
+        "A roller coaster",
+        "A tightrope",
+        "A pendulum"
+      ],
+      "answer": "A seesaw",
+      "explanation": "Lembke uses the seesaw metaphor to show how pleasure and pain are processed in the same brain region and always seek balance."
+    },
+    {
+      "id": 4,
+      "question": "What happens to the brain when it is repeatedly exposed to high-dopamine activities?",
+      "options": [
+        "It produces more dopamine permanently",
+        "It downregulates dopamine receptors, requiring more stimulation for the same effect",
+        "It becomes immune to addiction",
+        "It releases more serotonin to compensate"
+      ],
+      "answer": "It downregulates dopamine receptors, requiring more stimulation for the same effect",
+      "explanation": "With repeated exposure, the brain adapts by reducing dopamine receptors, leading to tolerance and the need for more stimulation."
+    },
+    {
+      "id": 5,
+      "question": "What is 'dopamine fasting' as described in the book?",
+      "options": [
+        "Eating foods that suppress dopamine",
+        "Abstaining from high-dopamine activities to reset the brain's reward system",
+        "A medical treatment for depression",
+        "Sleeping for extended periods"
+      ],
+      "answer": "Abstaining from high-dopamine activities to reset the brain's reward system",
+      "explanation": "A dopamine fast involves stepping away from pleasurable stimuli to allow the brain's reward pathways to recalibrate."
+    },
+    {
+      "id": 6,
+      "question": "What is the 'pleasure-pain balance' concept in the book?",
+      "options": [
+        "The idea that pleasure always outweighs pain",
+        "The brain's tendency to counteract pleasure with an equal amount of pain to maintain homeostasis",
+        "A therapy technique for addiction",
+        "The ratio of good to bad experiences in life"
+      ],
+      "answer": "The brain's tendency to counteract pleasure with an equal amount of pain to maintain homeostasis",
+      "explanation": "The brain seeks homeostasis — every pleasure is followed by a comedown or craving that tips the scale toward pain."
+    },
+    {
+      "id": 7,
+      "question": "Dr. Lembke is a professor and chief of addiction medicine at which institution?",
+      "options": [
+        "Harvard Medical School",
+        "Johns Hopkins University",
+        "Stanford University",
+        "Yale University"
+      ],
+      "answer": "Stanford University",
+      "explanation": "Dr. Anna Lembke is a psychiatrist and chief of the Addiction Medicine Dual Diagnosis Clinic at Stanford University."
+    },
+    {
+      "id": 8,
+      "question": "What personal addiction does Dr. Lembke reveal in the book?",
+      "options": [
+        "Alcohol",
+        "Social media",
+        "Romance novels",
+        "Video games"
+      ],
+      "answer": "Romance novels",
+      "explanation": "Dr. Lembke candidly shares her own addiction to trashy romance novels as a way of illustrating the book's themes."
+    },
+    {
+      "id": 9,
+      "question": "According to Lembke, what role does pain play in recovery from addiction?",
+      "options": [
+        "Pain should be avoided entirely",
+        "Embracing pain can help reset the dopamine system and build resilience",
+        "Pain is irrelevant to recovery",
+        "Pain only worsens addiction"
+      ],
+      "answer": "Embracing pain can help reset the dopamine system and build resilience",
+      "explanation": "Lembke argues that voluntarily engaging with pain (cold showers, fasting, exercise) can tip the balance back toward pleasure."
+    },
+    {
+      "id": 10,
+      "question": "What does the acronym DOPAMINE stand for in the book's framework?",
+      "options": [
+        "A list of addiction symptoms",
+        "A clinical assessment tool for evaluating compulsive behavior",
+        "A diet plan for mental health",
+        "A sleep improvement method"
+      ],
+      "answer": "A clinical assessment tool for evaluating compulsive behavior",
+      "explanation": "Lembke introduces DOPAMINE as a framework: Data, Objectives, Problems, Abstinence, Mindfulness, Insight, Next Steps, Experiments."
+    },
+    {
+      "id": 11,
+      "question": "How long does Dr. Lembke typically recommend a dopamine fast (abstinence period) to reset the brain?",
+      "options": [
+        "1 week",
+        "2 weeks",
+        "4 weeks",
+        "3 months"
+      ],
+      "answer": "4 weeks",
+      "explanation": "Lembke suggests approximately four weeks of abstinence to allow dopamine receptors to recover and reset."
+    },
+    {
+      "id": 12,
+      "question": "What does the book say about the relationship between modern technology and dopamine?",
+      "options": [
+        "Technology has no effect on dopamine levels",
+        "Technology is deliberately engineered to trigger dopamine release and promote compulsive use",
+        "Technology only affects dopamine in teenagers",
+        "Technology reduces dopamine and causes depression"
+      ],
+      "answer": "Technology is deliberately engineered to trigger dopamine release and promote compulsive use",
+      "explanation": "Lembke discusses how apps, social media, and devices are designed to maximize engagement by exploiting the dopamine reward system."
+    },
+    {
+      "id": 13,
+      "question": "What is 'compulsive overconsumption' as described in the book?",
+      "options": [
+        "Eating too much sugar",
+        "The inability to stop consuming a substance or behavior despite negative consequences",
+        "A medical disorder caused by dopamine deficiency",
+        "Buying more than you need"
+      ],
+      "answer": "The inability to stop consuming a substance or behavior despite negative consequences",
+      "explanation": "Compulsive overconsumption refers to addictive patterns where people continue harmful behaviors despite knowing the consequences."
+    },
+    {
+      "id": 14,
+      "question": "According to Lembke, what is the 'arrival fallacy'?",
+      "options": [
+        "The belief that moving to a new city will solve your problems",
+        "The mistaken belief that achieving a goal will bring lasting happiness",
+        "The idea that addiction always starts gradually",
+        "The assumption that pain medication is always addictive"
+      ],
+      "answer": "The mistaken belief that achieving a goal will bring lasting happiness",
+      "explanation": "The arrival fallacy is the illusion that once we achieve something, we'll finally be happy — but the brain adapts and the pleasure fades."
+    },
+    {
+      "id": 15,
+      "question": "What is the key message about pain in 'Dopamine Nation'?",
+      "options": [
+        "Pain should always be medicated",
+        "Pain is the enemy of wellbeing",
+        "Pain is an essential part of life and avoiding it leads to greater suffering",
+        "Pain is only physical"
+      ],
+      "answer": "Pain is an essential part of life and avoiding it leads to greater suffering",
+      "explanation": "Lembke argues that our efforts to avoid all pain through modern comforts and substances actually worsen our overall wellbeing."
+    },
+    {
+      "id": 16,
+      "question": "What brain region is primarily discussed in relation to the pleasure-pain balance?",
+      "options": [
+        "The prefrontal cortex",
+        "The nucleus accumbens",
+        "The amygdala",
+        "The hippocampus"
+      ],
+      "answer": "The nucleus accumbens",
+      "explanation": "The nucleus accumbens is the brain's reward center where dopamine is released and where pleasure and pain are processed."
+    },
+    {
+      "id": 17,
+      "question": "What does Lembke say about truth-telling in recovery?",
+      "options": [
+        "It is optional and personal",
+        "It is a powerful tool that fosters connection and healing",
+        "It often makes addiction worse",
+        "It is only relevant in therapy sessions"
+      ],
+      "answer": "It is a powerful tool that fosters connection and healing",
+      "explanation": "Lembke emphasizes radical honesty as a cornerstone of recovery, arguing that vulnerability and truth-telling rebuild trust and connection."
+    },
+    {
+      "id": 18,
+      "question": "What does Lembke mean by 'self-binding'?",
+      "options": [
+        "Tying yourself to a chair to avoid temptation",
+        "Creating physical, psychological, or social barriers between yourself and your drug of choice",
+        "A meditation technique",
+        "Binding legal contracts to avoid addictive purchases"
+      ],
+      "answer": "Creating physical, psychological, or social barriers between yourself and your drug of choice",
+      "explanation": "Self-binding strategies involve proactively limiting access to addictive substances or behaviors before cravings hit."
+    },
+    {
+      "id": 19,
+      "question": "How does Lembke describe the impact of smartphones on modern addiction?",
+      "options": [
+        "Smartphones are only addictive for children",
+        "Smartphones are the modern equivalent of a drug pipe, delivering digital dopamine hits constantly",
+        "Smartphones help reduce addictive tendencies",
+        "Smartphones have no proven link to dopamine"
+      ],
+      "answer": "Smartphones are the modern equivalent of a drug pipe, delivering digital dopamine hits constantly",
+      "explanation": "Lembke compares constant smartphone use to drug use, as both hijack the dopamine reward system in similar ways."
+    },
+    {
+      "id": 20,
+      "question": "What is the overall takeaway of 'Dopamine Nation'?",
+      "options": [
+        "Pursue as much pleasure as possible while you can",
+        "Avoid all modern technology",
+        "Finding meaning and balance requires embracing discomfort and being honest with ourselves",
+        "Dopamine is the root of all human suffering"
+      ],
+      "answer": "Finding meaning and balance requires embracing discomfort and being honest with ourselves",
+      "explanation": "The book concludes that a fulfilling life comes not from chasing pleasure but from finding balance, embracing pain, and living with honesty."
+    }
+  ]
+}
