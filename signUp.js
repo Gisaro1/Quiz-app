@@ -1,7 +1,5 @@
-const form = document.getElementById('form');
-const username = document.getElementById('username');
-const password = document.getElementById('password');
-const passwordConfirm = document.getElementById('confirm');
+const getElements = (...ids)=> ids.reduce((obj,id) => ({...obj,[id]:document.getElementById(id)}),{});
+const {form,username,password ,confirm:passwordConfirm} = getElements('form,username,password,confirm');
 
 function getStoredUsers(){
     try{
@@ -12,13 +10,18 @@ function getStoredUsers(){
         return []
     }
 }
+function getValues({username,password,passwordConfirm}){
+    return{
+        usernameEnter:username.value.trim(),
+        passwordEnter:password.value.trim(),
+        confirmEnter:passwordConfirm.value.trim()
+    };
+}
 
 function handlerSignUp(event){
     event.preventDefault();
-
-    const usernameEnter = username.value.trim();
-    const passwordEnter = password.value.trim();
-    const confirmEnter = passwordConfirm.value.trim();
+    
+    const{usernameEnter,passwordEnter,confirmEnter} = getValues({username,password,passwordConfirm});
 
     if(!usernameEnter || !passwordEnter || !confirmEnter){
         showMessage("All fields are required", "red");
@@ -37,7 +40,7 @@ function handlerSignUp(event){
         showMessage("Username is already taken", "red");
         return;
     }
-    user.push({username:usernameEnter, password:passwordEnter})
+    users.push({username:usernameEnter, password:passwordEnter})
     localStorage.setItem('users', JSON.stringify(users));
 
     showMessage("Sign up successful!", "green")

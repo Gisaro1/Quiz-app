@@ -4,16 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <main>
-        <form onsubmit="handleLogin(event)">
-            <input type="text" placeholder="username" id="username">
-            <input type="password"placeholder="password" id="password">
-            <button type="submit">Login</button>
+<body class="bg-indigo-950 font-mono">
+    <main class="flex flex-col gap-2 justify-center m-48 py-4 px-4 py-2 rounded-lg bg-indigo-900">
+         <div class="px-2">
+             <h2 class="text-lg font-semibold text-gray-800">Welcome back</h2>
+             <p class="text-sm text-gray-400">Sign in to your account</p>
+         </div>
+        <form onsubmit="handleLogin(event)" class="flex flex-col gap-4 rounded-md py-2 px-2 justify-center">
+            <input type="text" placeholder="username" id="username" class="rounded-md h-12 hover:bg-gray-300">
+            <input type="password"placeholder="password" id="password" class="rounded-md h-12 hover:bg-gray-300">
+            <button type="submit" class="rounded-md w-full h-12 border text-red-900 text-white hover:text-indigo-800 hover:bg-sky-500">Login</button>
         </form>    
-        <div>
-            <button onclick="goToSignUp()">Sign Up</button>
+        <div class="flex justify-center px-2">
+            <button onclick="goToSignUp()" class="rounded-md
+         w-full h-12 border text-white hover:text-indigo-800 hover:bg-teal-500">Sign Up</button>
         </div>
     </main>
     <script src="index.js"></script>
