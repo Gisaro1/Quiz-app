@@ -4,16 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SignUp Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <main>
-        <form onsubmit="handlerSignUp(event)" id="form">
-            <input type="text" id="username" placeholder="username">
-            <input type="password" id="password" placeholder="password">
-            <input type="password" id="confirm" placeholder="confirm password">
-            <button id="btn" type="submit">Create Account</button>
+<body class="bg-indigo-950 font-mono flex items-center justify-center min-h-screen">
+    <main class="bg-white flex flex-col gap-3 justify-center m-48 p-10 w-full max-w-sm rounded-xl bg-indigo-900">
+    <div>
+      <h2 class="text-lg font-semibold text-gray-800">Create account</h2>
+      <p class="text-sm text-gray-400">Join and start the quiz</p>
+    </div>
+        <form onsubmit="handlerSignUp(event)" id="form" class="flex flex-col gap-3">
+            <input type="text" id="username" placeholder="username" class="rounded-md h-10 px-3 border border-gray-200 text-sm hover:bg-gray-300">
+            <input type="password" id="password" placeholder="password" class="rounded-md h-10 px-3 border border-gray-200 text-sm hover:bg-gray-300">
+            <input type="password" id="confirm" placeholder="confirm password" class="rounded-md h-10 px-3 border border-gray-200 text-sm  hover:bg-gray-300">
+            <button id="btn" type="submit" class="rounded-md w-full h-10 border border-gray-300 text-md text-gray-500 hover:text-indigo-800 hover:bg-sky-500">Create Account</button>
         </form>
         <div id="message"></div>
+        <p class="text-xs text-gray-400 text-center">Already have an account?
+            <span onclick="window.location.href='index.html'" class="text-indigo-500 cursor-pointer hover:underline">Login</span>
+        </p>
+
     </main>
     <script src="signUp.js"></script>
 </body>
