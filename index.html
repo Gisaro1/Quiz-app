@@ -6,20 +6,19 @@
     <title>Landing page</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-indigo-950 font-mono">
-    <main class="flex flex-col gap-2 justify-center m-48 py-4 px-4 py-2 rounded-lg bg-indigo-900">
-         <div class="px-2">
+<body class="bg-indigo-950 font-mono flex items-center justify-center min-h-screen">
+    <main class="bg-white flex flex-col gap-3 justify-center m-48 p-10 w-full max-w-sm rounded-xl bg-indigo-900">
+         <div>
              <h2 class="text-lg font-semibold text-gray-800">Welcome back</h2>
              <p class="text-sm text-gray-400">Sign in to your account</p>
          </div>
-        <form onsubmit="handleLogin(event)" class="flex flex-col gap-4 rounded-md py-2 px-2 justify-center">
-            <input type="text" placeholder="username" id="username" class="rounded-md h-12 hover:bg-gray-300">
-            <input type="password"placeholder="password" id="password" class="rounded-md h-12 hover:bg-gray-300">
-            <button type="submit" class="rounded-md w-full h-12 border text-red-900 text-white hover:text-indigo-800 hover:bg-sky-500">Login</button>
+        <form onsubmit="handleLogin(event)" class="flex flex-col gap-3">
+            <input type="text" placeholder="username" id="username" class="rounded-md h-10 px-3 border border-gray-200 text-sm hover:bg-gray-300">
+            <input type="password"placeholder="password" id="password" class="rounded-md h-10 px-3 border border-gray-200 text-sm  hover:bg-gray-300">
+            <button type="submit" class="rounded-md w-full h-10 border border-gray-300 text-md text-gray-500 hover:bg-sky-500">Login</button>
         </form>    
-        <div class="flex justify-center px-2">
-            <button onclick="goToSignUp()" class="rounded-md
-         w-full h-12 border text-white hover:text-indigo-800 hover:bg-teal-500">Sign Up</button>
+        <div class="flex justify-center">
+            <button onclick="goToSignUp()" class="rounded-md w-full h-10 border border-gray-300 text-md text-gray-500 hover:bg-lime-500">Sign Up</button>
         </div>
     </main>
     <script src="index.js"></script>
