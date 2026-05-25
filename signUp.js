@@ -1,5 +1,5 @@
 const getElements = (...ids)=> ids.reduce((obj,id) => ({...obj,[id]:document.getElementById(id)}),{});
-const {form,username,password ,confirm:passwordConfirm} = getElements('form,username,password,confirm');
+const {form,username,password ,passwordConfirm} = getElements('form','username','password','passwordConfirm');
 
 function getStoredUsers(){
     try{
@@ -45,11 +45,17 @@ function handlerSignUp(event){
 
     showMessage("Sign up successful!", "green")
     form.reset();
+    setTimeout(() => {
+    window.location.href = 'question.html';
+    }, 1000);
 
 }
 function showMessage(message,color){
     const msg = document.getElementById('message');
     msg.textContent = message;
+    msg.className = "text-sm text-center font-semibold mt-1 py-2 px-3 rounded-md";
     msg.style.color = color;
 }
-form.addEventListener('submit',handlerSignUp)
+function hasAccount(){
+    window.location.href = 'index.html'
+}

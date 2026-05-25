@@ -15,11 +15,12 @@
         <form onsubmit="handleLogin(event)" class="flex flex-col gap-3">
             <input type="text" placeholder="username" id="username" class="rounded-md h-10 px-3 border border-gray-200 text-sm hover:bg-gray-300">
             <input type="password"placeholder="password" id="password" class="rounded-md h-10 px-3 border border-gray-200 text-sm  hover:bg-gray-300">
-            <button type="submit" class="rounded-md w-full h-10 border border-gray-300 text-md text-gray-500 hover:bg-sky-500">Login</button>
+            <button type="submit" class="rounded-md w-full h-10 border border-gray-300 text-md text-gray-500 hover:text-indigo-800 hover:bg-sky-500">Login</button>
         </form>    
         <div class="flex justify-center">
             <button onclick="goToSignUp()" class="rounded-md w-full h-10 border border-gray-300 text-md text-gray-500 hover:bg-lime-500">Sign Up</button>
         </div>
+           <div id="message"></div>
     </main>
     <script src="index.js"></script>
 </body>
