@@ -1,24 +1,23 @@
 const getElements = (...ids) => ids.reduce((obj, id) => ({...obj, [id]: document.getElementById(id)}), {});
 const {username, password} = getElements('username', 'password');
 
-function getStoredUsers() {
+const getStoredUsers = ()  =>{
   try {
-    const rawData = localStorage.getItem("users");
-    return rawData ? JSON.parse(rawData) : [];
+    return JSON.parse(localStorage.getItem("users")) ?? [];
   } catch(error) {
     console.log("Failed to parse users from localStorage:", error);
     return [];
   }
 }
 
-function handleLogin(event) {
+const handleLogin = (event) =>{
   event.preventDefault();
 
   const usernameEnter = username.value.trim();
   const passwordEnter = password.value.trim();
 
   if(!usernameEnter || !passwordEnter) {
-    showMessage("All fields are required", "red");
+    showMessage("All fields are required");
     return;
   }
 
@@ -30,7 +29,7 @@ function handleLogin(event) {
   );
 
   if(!found) {
-    showMessage("Invalid username or password", "red");
+    showMessage("Invalid username or password");
     return;
   }
   localStorage.setItem("session", JSON.stringify({ 
@@ -39,12 +38,10 @@ function handleLogin(event) {
   }));
    window.location.href = 'question.html';
 }
-function showMessage(message, color) {
+function showMessage(message, color = "red") {
   const msg = document.getElementById('message');
   msg.textContent = message;
   msg.className = "text-sm text-center font-semibold mt-1 py-2 px-3 rounded-md";
   msg.style.color = color;
 }
-function goToSignUp() {
-     window.location.href = 'signUp.html';
-}
+const goToSignUp =() => (window.location.href = 'signUp.html');
