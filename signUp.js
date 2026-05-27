@@ -1,35 +1,32 @@
 const getElements = (...ids)=> ids.reduce((obj,id) => ({...obj,[id]:document.getElementById(id)}),{});
-const {form,username,password ,confirm:passwordConfirm} = getElements('form,username,password,confirm');
+const {form,username,password ,passwordConfirm} = getElements('form','username','password','passwordConfirm');
 
-function getStoredUsers(){
+const getStoredUsers = () =>{
     try{
-       const rawData = localStorage.getItem("users");
-       return rawData ? JSON.parse(rawData) : [];
+       return JSON.parse(localStorage.getItem("users")) ?? [];
     } catch(error){
         console.log("Failed to parse users from localStorage:", error);
-        return []
-    }
+        return [];
+    };
 }
-function getValues({username,password,passwordConfirm}){
-    return{
+const getValues = ({username,password,passwordConfirm} = {}) =>({
         usernameEnter:username.value.trim(),
         passwordEnter:password.value.trim(),
         confirmEnter:passwordConfirm.value.trim()
-    };
-}
+})
 
-function handlerSignUp(event){
+const handlerSignUp = (event) =>{
     event.preventDefault();
     
     const{usernameEnter,passwordEnter,confirmEnter} = getValues({username,password,passwordConfirm});
 
     if(!usernameEnter || !passwordEnter || !confirmEnter){
-        showMessage("All fields are required", "red");
+        showMessage("All fields are required");
         return;
     }
 
-    if(passwordEnter != confirmEnter){
-        showMessage("Passwords do not match", "red");
+    if(passwordEnter !== confirmEnter){
+        showMessage("Passwords do not match");
         return;
     }
 
@@ -45,11 +42,15 @@ function handlerSignUp(event){
 
     showMessage("Sign up successful!", "green")
     form.reset();
+    setTimeout(() => {
+    window.location.href = 'question.html';
+    }, 1000);
 
 }
-function showMessage(message,color){
+function showMessage(message,color = "red"){
     const msg = document.getElementById('message');
     msg.textContent = message;
+    msg.className = "text-sm text-center font-semibold mt-1 py-2 px-3 rounded-md";
     msg.style.color = color;
 }
-form.addEventListener('submit',handlerSignUp)
+const hasAccount = () =>(window.location.href = 'index.html');

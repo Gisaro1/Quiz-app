@@ -13,16 +13,15 @@
       <p class="text-sm text-gray-400">Join and start the quiz</p>
     </div>
         <form onsubmit="handlerSignUp(event)" id="form" class="flex flex-col gap-3">
-            <input type="text" id="username" placeholder="username" class="rounded-md h-10 px-3 border border-gray-200 text-sm hover:bg-gray-300">
-            <input type="password" id="password" placeholder="password" class="rounded-md h-10 px-3 border border-gray-200 text-sm hover:bg-gray-300">
-            <input type="password" id="confirm" placeholder="confirm password" class="rounded-md h-10 px-3 border border-gray-200 text-sm  hover:bg-gray-300">
-            <button id="btn" type="submit" class="rounded-md w-full h-10 border border-gray-300 text-md text-gray-500 hover:text-indigo-800 hover:bg-sky-500">Create Account</button>
+            <input type="text" id="username" placeholder="username" required class="rounded-md h-10 px-3 border border-gray-200 text-sm hover:bg-gray-300">
+            <input type="password" id="password" placeholder="password" required class="rounded-md h-10 px-3 border border-gray-200 text-sm hover:bg-gray-300">
+            <input type="password" id="passwordConfirm" placeholder="confirm password" required class="rounded-md h-10 px-3 border border-gray-200 text-sm  hover:bg-gray-300">
+            <button id="btn" type="submit" required class="rounded-md w-full h-10 border border-gray-300 text-md text-gray-500 hover:text-indigo-800 hover:bg-sky-500">Create Account</button>
         </form>
         <div id="message"></div>
         <p class="text-xs text-gray-400 text-center">Already have an account?
-            <span onclick="window.location.href='index.html'" class="text-indigo-500 cursor-pointer hover:underline">Login</span>
+            <span onclick="hasAccount()" class="text-indigo-500 cursor-pointer hover:underline">Login</span>
         </p>
-
     </main>
     <script src="signUp.js"></script>
 </body>

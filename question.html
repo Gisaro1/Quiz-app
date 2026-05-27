@@ -3,14 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Quiz app</title>
 </head>
-<body>
-<div class="p-4 bg-slate-800">
-    <div class="text-white font-bold text-xl px-10 py-16 font-mono uppercase flex gap-4 text-yellow-200 items-center justify-center">question section
-        <span class="text-2xl text-yellow-500">1</span>
-    </div>
-</div>
+<body class="bg-indigo-950 font-mono flex items-center justify-center min-h-screen">
+  <main class="flex-col gap-5 justify-center p-10 w-full max-w-xl rounded-xl bg-white">
+    <header class="flex justify-between items-center">
+      <p id="welcomeUser" class="text-sm text-gray-400"></p>
+      <p id="progress" class="text-sm text-gray-400">1 / 20</p>
+    </header>
+  <section>
+ <div class="w-full bg-gray-100 rounded-full h-2">
+        <div id="progressBar" class="bg-indigo-500 h-2 rounded-full transition-all" style="width:5%"></div>
+      </div>
+  </section>
+  <section>
+    <h2 id="questionText" class="text-lg font-semibold text-gray-800"></h2>
+  </section>
+  <section id="optionsContainer" class="flex flex-col gap-3">
+      <label class="flex items-center gap-3 border border-gray-200 rounded-md px-4 py-3 cursor-pointer hover:bg-indigo-50">
+        <input type="radio" name="option" class="accent-indigo-500">
+        <span class="text-sm text-gray-700">Option text</span>
+      </label>
+    </section>
+  <div id="message" class="text-sm text-center font-semibold"></div>
+ <footer class="flex gap-3">
+      <button onclick="handleNext()" class="w-full h-10 border border-gray-300 rounded-md text-sm text-gray-500 hover:bg-indigo-500 hover:text-white">Next</button>
+    </footer>
+  </main>
+<script src="question.js"></script>
 </body>
 </html>
