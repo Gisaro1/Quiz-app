@@ -2,111 +2,116 @@ let questions = [];
 let current = 0;
 let score = 0;
 
+const variables = {
+    questionText: document.getElementById('questionText'),
+    progress: document.getElementById('progress'),
+    progressBar: document.getElementById('progressBar'),
+    optionsContainer: document.getElementById('optionsContainer'),
+    message: document.getElementById('message'),
+    welcomeUser: document.getElementById('welcomeUser'),
+    nextBtn: document.getElementById('nextBtn')
+}
+
 const checkSession = () =>{
+    try{
     const session = JSON.parse(localStorage.getItem('session'));
-    if (!session || !session.loggedIn) {
+    if (!session ?. loggedIn) {
         window.location.href = 'index.html';
         return false;
     }
     return true;
+}   catch(error){
+    console.error('Session Corrupted',error)
+    window.location.href = 'index.html'
+    return false;
 }
+} 
 
 
 const loadQuestion = async() =>{
     try{
         const response = await fetch('question.json');
-        const data = await response.json();
-        // question.json is an object: { title, author, questions: [...] }
-        questions = Array.isArray(data) ? data : data.questions;
+        if(!response.ok) throw new Error('Network response was not ok')
+        const data = await response.json()
+        questions = Array.isArray(data) ? data : (data.questions || []);
         current = 0;
         score = 0;
         showQuestion();
 
     } catch(error){
         console.error("Failed to load questions:", error);
+        showMessage("Error loading quiz data. Please refresh.", "red")
     }
 }
 
 const showQuestion = () =>{
     const q = questions[current];
-    document.getElementById('questionText').innerHTML = q.question;
-    document.getElementById('progress').textContent = `Question ${current + 1} / ${questions.length}`;
-    updateProgress();
-    renderOptions(q.options);
-    document.getElementById('message').textContent = '';
+    if(!q) return;
+    variables.questionText.textContent = q.question;
+    variables.progress.textContent = `Question ${current + 1} / ${questions.length}`
+    updateProgress()
+    renderOptions(q.options)
+    variables.message.textContent = '';
 }
 
 const renderOptions = (options) =>{
-    const container = document.getElementById('optionsContainer');
-    container.innerHTML = "";
-    options.forEach((option, index) =>{
-        container.innerHTML +=`
-      <label class="flex items-center gap-3 border border-gray-200 rounded-md px-4 py-3 cursor-pointer hover:bg-indigo-50">
-        <input type="radio" name="option" value="${option}" class="accent-indigo-500"/>
-        <span class="text-sm text-gray-700">${option}</span>
-      </label>
-    `;
-
-    });
+variables.optionsContainer.innerHTML = options.map((option) => `
+        <label class="flex items-center gap-3 border border-gray-200 rounded-md px-4 py-3 cursor-pointer hover:bg-indigo-50">
+            <input type="radio" name="option" value="${option}" class="accent-indigo-500"/>
+            <span class="text-sm text-gray-700">${option}</span>
+        </label>
+    `).join('');
 }
 
 const updateProgress = () =>{
-    const percent = ((current + 1)/questions.length)*100;
-    document.getElementById('progressBar').style.width = `${percent}%`
+    const percent = ((current + 1) / questions.length) * 100;
+    variables.progress.textContent = `Question ${current + 1} / ${questions.length}`;
+    variables.progressBar.style.width = `${percent}%`;
 }
 
 const handleNext = () =>{
-    const selected = document.querySelector('input[name = "option"]:checked');
-
-    // If user didn't select an option, stop here.
+    const selected = document.querySelector('input[name="option"]:checked');
     if (!selected) {
-        showMessage("Please select an answer");
+        showMessage('Please select an answer');
         return;
     }
 
-    // Update score/current based on selected answer.
-    if (selected.value === questions[current].answer) {
-        score++;
-    }
+    if (selected.value === questions[current].answer) score++;
 
     current++;
-    (current < questions.length) ? showQuestion() : saveResults(); 
-}
+    current < questions.length ? showQuestion() : saveResults();
+};
 
 
 const saveResults = () =>{
-    // Save results so results.html can read them from localStorage.
     localStorage.setItem('quizResults', JSON.stringify({
         score,
         total: questions.length
     }));
 
-    window.location.href = 'results.html';
+    window.location.href = 'marks.html';
 }
 
 
 const showMessage = (message,color = "red") =>{
-    const msg = document.getElementById('message');
-    msg.textContent = message;
-    msg.style.color = color;
+    variables.message.textContent = message;
+    variables.message.style.color = color;
 }
 
 const welcomeUser = () =>{
-    const session = JSON.parse(localStorage.getItem('session'));
-
-    // question.html uses id="welcomeUser".
-    const el = document.getElementById('welcomeUser');
-    if (el && session?.username) {
-        el.textContent = `Welcome, ${session.username}!`;
+    try {
+        const session = JSON.parse(localStorage.getItem('session') ?? 'null');
+        if (variables.welcomeUser && session?.username) {
+            variables.welcomeUser.textContent = `Welcome, ${session.username}!`;
+        }
+    } catch (error) {
+        console.error('Error parsing session', error);
     }
 }
 
 document.addEventListener('DOMContentLoaded', () =>{
     if (checkSession() === false) return;
-
     welcomeUser();
     loadQuestion();
-
-    // question.html calls handleNext() inline via onclick, so we don't need a nextBtn listener.
 });
 
