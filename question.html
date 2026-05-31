@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Quiz app</title>
+    <style>
+      .hidden { display: none; }
+    </style>
 </head>
 <body class="bg-indigo-950 font-mono flex items-center justify-center min-h-screen">
   <main class="flex-col gap-5 justify-center p-10 w-full max-w-xl rounded-xl bg-white">
@@ -12,11 +15,11 @@
       <p id="welcomeUser" class="text-sm text-gray-400"></p>
       <p id="progress" class="text-sm text-gray-400">1 / 20</p>
     </header>
-  <section>
- <div class="w-full bg-gray-100 rounded-full h-2">
+
+    <section>
+      <div class="w-full bg-gray-100 rounded-full h-2">
         <div id="progressBar" class="bg-indigo-500 h-2 rounded-full transition-all" style="width:5%"></div>
-      </div>
-  </section>
+  </div>
   <section>
     <h2 id="questionText" class="text-lg font-semibold text-gray-800"></h2>
   </section>
@@ -28,7 +31,10 @@
     </section>
   <div id="message" class="text-sm text-center font-semibold"></div>
  <footer class="flex gap-3">
-      <button onclick="handleNext()" class="w-full h-10 border border-gray-300 rounded-md text-sm text-gray-500 hover:bg-indigo-500 hover:text-white">Next</button>
+      <button id="backBtn" onclick="handleBack()" class="hidden w-full h-10 border border-gray-300 rounded-md text-sm text-gray-500 hover:bg-indigo-500 hover:text-white">← Back</button>
+      <button id="nextBtn" onclick="handleNext()" class="w-full h-10 border border-gray-300 rounded-md text-sm text-gray-500 hover:bg-indigo-500 hover:text-white">Next</button>
+      <button id="finishBtn" onclick="handleFinish()" class="hidden w-full h-10 border border-gray-300 rounded-md text-sm text-gray-500 hover:bg-indigo-500 hover:text-white">Finish</button>
+
     </footer>
   </main>
 <script src="question.js"></script>
