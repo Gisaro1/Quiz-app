@@ -6,7 +6,36 @@
     <title>Marks</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-indigo-950">
-    
+<body class="bg-indigo-950 min-h-screen flex items-center justify-center">
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-md mx-4 p-8 flex flex-col items-center gap-6">
+        <div class="text-center">
+            <h1 class="text-2xl font-bold text-indigo-700">Quiz Complete!</h1>
+            <p id="username" class="text-sm text-gray-500 mt-1"></p>
+        </div>
+        <div class="flex flex-col items-center justify-center w-36 h-36 rounded-full border-4 border-indigo-500 shadow-md">
+            <span id="percentage" class="text-3xl font-extrabold text-indigo-700"></span>
+            <span id="score" class="text-sm text-gray-500 mt-1"></span>
+        </div>
+        <div class="px-6 py-2 rounded-full bg-indigo-50 border border-indigo-200">
+            <span id="grade" class="text-lg font-semibold"></span>
+        </div>
+         <hr class="w-full border-gray-200"/>
+         <div class="flex flex-col w-full gap-3">
+            <button
+                id="retryBtn"
+                class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg transition duration-200">
+                Retry Quiz
+            </button>
+            <button
+                id="logoutBtn"
+                class="w-full border border-gray-300 hover:bg-gray-100 text-gray-600 font-semibold py-3 rounded-lg transition duration-200">
+                Logout
+            </button>
+        </div>
+
+    </div>
+
+    <script src="marks.js"></script>
+    </div>
 </body>
 </html>

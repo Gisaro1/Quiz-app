@@ -24,7 +24,18 @@ const handlerSignUp = (event) =>{
         showMessage("All fields are required");
         return;
     }
-
+    const checkPassword = {
+        hasLower:/[a-z]/.test(passwordEnter),
+        hasUpper:/[A-Z]/.test(passwordEnter),
+        hasNumber:/\d/.test(passwordEnter),
+        hasSpecial:/[!@#$%^&*()-+.]/.test(passwordEnter),
+        isLongEnough:passwordEnter.length >= 8
+    }
+    const{hasLower,hasUpper,hasNumber,hasSpecial,isLongEnough} = checkPassword;
+    if(!hasLower || !hasUpper || !hasNumber || !hasSpecial || !isLongEnough){
+        showMessage("Password must be at least 6 characters and include one lowercase, one uppercase, and one digit")
+        return;
+    }
     if(passwordEnter !== confirmEnter){
         showMessage("Passwords do not match");
         return;
