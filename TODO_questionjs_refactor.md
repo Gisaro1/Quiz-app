@@ -1,0 +1,6 @@
+- [ ] Refactor question.js to reduce unwanted conditions by centralizing guards/state validation.
+- [ ] Keep existing behavior: session check, question fetch, progress persistence (quizProgress), score saving (quizResults), finish redirect.
+- [ ] Make rendering pipeline simpler: load -> validate -> setState -> render.
+- [ ] Ensure question.json supports both array and { questions: [...] } formats.
+- [ ] Update and test: reload stays on the same question.
+- [ ] Update and test: back/next/finish work.

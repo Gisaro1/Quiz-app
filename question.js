@@ -1,26 +1,11 @@
 let questions = [];
 let current = 0;
-let score = 0;
+let userAnswer = [];
 
-const getElements = (...ids) => {
-  return ids.reduce((obj, id) => {
-    obj[id] = document.getElementById(id);
-    return obj;
-  }, {});
-};
+const getElements = (...ids) => ids.reduce((acc, id) => ((acc[id] = document.getElementById(id)), acc), {});
 
-const variables = getElements(
-  'questionText',
-  'optionsContainer',
-  'progress',
-  'progressBar',
-  'message',
-  'welcomeUser',
-  'nextBtn',
-  'backBtn',
-  'finishBtn'
+const el = getElements('questionText','optionsContainer','progress','progressBar','message','welcomeUser','nextBtn','backBtn'
 );
-
 
 const checkSession = () => {
   try {
@@ -39,38 +24,56 @@ const checkSession = () => {
 
 const loadQuestion = async () => {
   try {
-    const response = await fetch('question.json');
-    if (!response.ok) throw new Error('Network response was not ok');
-    const data = await response.json();
-
-    questions = Array.isArray(data) ? data : (data.questions || []);
-    current = 0;
-    score = 0;
+    const response = await fetch('question.json', { cache: 'no-store' });
+    if (!response.ok) {
+      throw new Error(`Network response was not ok: ${response.status} ${response.statusText}`);
+    }
+    const loaded = await response.json();
+    questions = loaded?.questions ?? [];
+    const saved = JSON.parse(localStorage.getItem('quizProgress')) || {
+      current: 0,
+      userAnswer: []
+    };
+    current = saved.current;
+    userAnswer = saved.userAnswer;
     showQuestion();
   } catch (error) {
     console.error('Failed to load questions:', error);
-    showMessage('Error loading quiz data. Please refresh.', 'red');
+    showMessage(`Error loading quiz data: ${error?.message ?? error}`, 'red');
   }
 };
 
 const showQuestion = () => {
-  const q = questions[current];
-  if (!q) return;
+  const total = questions?.length ?? 0;
+  if (!total) {
+    showMessage('No quiz questions found in the data file.', 'red');
+    return;
+  }
+  const safeCurrent = Math.max(0, Math.min(current ?? 0, total - 1));
+  if (safeCurrent !== current) {
+    current = safeCurrent;
+    userAnswer = Array.isArray(userAnswer) ? userAnswer : [];
+    syncProgrees();
+  }
 
-  variables.questionText.textContent = q.question;
-  variables.progress.textContent = `Question ${current + 1} / ${questions.length}`;
+  const q = questions?.[current];
+  if (!q?.question || !Array.isArray(q.options)) {
+    showMessage('Question data is invalid.', 'red');
+    return;
+  }
+
+  el.questionText.textContent = q.question;
+  el.progress.textContent = `Question ${current + 1} / ${total}`;
   updateProgress();
-  renderOptions(q.options);
-  variables.message.textContent = '';
+  renderOptions(q.options, userAnswer[current]);
+  el.message.textContent = '';
 
-  if (variables.backBtn) variables.backBtn.classList.toggle('hidden', current === 0);
-  const isLast = current === questions.length - 1;
-  if (variables.nextBtn) variables.nextBtn.classList.toggle('hidden', isLast);
-  if (variables.finishBtn) variables.finishBtn.classList.toggle('hidden', !isLast);
+  el.backBtn.classList.toggle('hidden', current === 0);
+  el.nextBtn.textContent = current === total - 1 ? 'Finish' : 'Next';
 };
 
 const renderOptions = (options) => {
-  variables.optionsContainer.innerHTML = options
+  el.optionsContainer.innerHTML = options
     .map(
       (option) => `
         <label class="flex items-center gap-3 border border-gray-200 rounded-md px-4 py-3 cursor-pointer hover:bg-indigo-50">
@@ -83,14 +86,20 @@ const renderOptions = (options) => {
 };
 
 const updateProgress = () => {
-  const percent = ((current + 1) / questions.length) * 100;
-  variables.progress.textContent = `Question ${current + 1} / ${questions.length}`;
-  variables.progressBar.style.width = `${percent}%`;
+  const total = questions.length;
+  const percent = ((current + 1) / total) * 100;
+  el.progress.textContent = `Question ${current + 1} / ${total}`;
+  el.progressBar.style.width = `${percent}%`;
+};
+
+const syncProgrees = () =>{
+  localStorage.setItem('quizProgress', JSON.stringify({current,userAnswer}))
 };
 
 const handleBack = () => {
   if (current > 0) {
     current--;
+    syncProgrees()
     showQuestion();
   }
 };
@@ -101,40 +110,45 @@ const handleNext = () => {
     showMessage('Please select an answer');
     return;
   }
-
-  if (selected.value === questions[current].answer) score++;
-
+  userAnswer[current] = selected.value;
+  syncProgrees()
   current++;
-  if (current < questions.length) showQuestion();
-  else saveResults();
+  if (current < questions.length){
+    showQuestion();
+  } 
+  else{
+    saveResults();
+  } 
 };
-
 const handleFinish = () => saveResults();
 
 const saveResults = () => {
+  const finalScore = questions.reduce((score,q,idx)=>{
+    return score + (userAnswer[idx] === q.answer ? 1 : 0)
+  },0)
   localStorage.setItem(
     'quizResults',
     JSON.stringify({
-      score,
+      score:finalScore,
       total: questions.length
     })
   );
+  localStorage.removeItem('quizProgress')
   window.location.href = 'marks.html';
 };
 
 const showMessage = (message, color = 'red') => {
-  variables.message.textContent = message;
-  variables.message.style.color = color;
+  el.message.textContent = message;
+  el.message.style.color = color;
 };
 
 const welcomeUser = () => {
+  const raw = localStorage.getItem('session');
+  if (!raw) return;
   try {
-    const session = JSON.parse(localStorage.getItem('session') ?? 'null');
-    if (variables.welcomeUser && session?.username) {
-      variables.welcomeUser.textContent = `Welcome, ${session.username}!`;
-    }
-  } catch (error) {
-    console.error('Error parsing session', error);
+    const session = JSON.parse(raw);
+    if (session?.username) el.welcomeUser.textContent = `Welcome, ${session.username}!`;
+  } catch {
   }
 };
 
