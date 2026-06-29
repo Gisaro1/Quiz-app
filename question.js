@@ -49,21 +49,12 @@ const showQuestion = () => {
     showMessage('No quiz questions found in the data file.', 'red');
     return;
   }
-  const safeCurrent = Math.max(0, Math.min(current ?? 0, total - 1));
-  if (safeCurrent !== current) {
-    current = safeCurrent;
-    userAnswer = Array.isArray(userAnswer) ? userAnswer : [];
-    syncProgrees();
-  }
-
   const q = questions?.[current];
   if (!q?.question || !Array.isArray(q.options)) {
     showMessage('Question data is invalid.', 'red');
     return;
   }
-
   el.questionText.textContent = q.question;
-  el.progress.textContent = `Question ${current + 1} / ${total}`;
   updateProgress();
   renderOptions(q.options, userAnswer[current]);
   el.message.textContent = '';
@@ -72,12 +63,12 @@ const showQuestion = () => {
   el.nextBtn.textContent = current === total - 1 ? 'Finish' : 'Next';
 };
 
-const renderOptions = (options) => {
+const renderOptions = (options,selectedValue) => {
   el.optionsContainer.innerHTML = options
     .map(
       (option) => `
         <label class="flex items-center gap-3 border border-gray-200 rounded-md px-4 py-3 cursor-pointer hover:bg-indigo-50">
-          <input type="radio" name="option" value="${option}" class="accent-indigo-500"/>
+          <input type="radio" name="option" value="${option}" class="accent-indigo-500" ${option === selectedValue ? 'checked' : ''}/>
           <span class="text-sm text-gray-700">${option}</span>
         </label>
       `
@@ -120,7 +111,6 @@ const handleNext = () => {
     saveResults();
   } 
 };
-const handleFinish = () => saveResults();
 
 const saveResults = () => {
   const finalScore = questions.reduce((score,q,idx)=>{
@@ -143,10 +133,8 @@ const showMessage = (message, color = 'red') => {
 };
 
 const welcomeUser = () => {
-  const raw = localStorage.getItem('session');
-  if (!raw) return;
   try {
-    const session = JSON.parse(raw);
+    const session = JSON.parse(localStorage.getItem('session'));
     if (session?.username) el.welcomeUser.textContent = `Welcome, ${session.username}!`;
   } catch {
   }
@@ -154,7 +142,6 @@ const welcomeUser = () => {
 
 window.handleBack = handleBack;
 window.handleNext = handleNext;
-window.handleFinish = handleFinish;
 
 document.addEventListener('DOMContentLoaded', () => {
   if (checkSession() === false) return;
