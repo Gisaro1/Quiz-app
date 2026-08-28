@@ -29,7 +29,7 @@ const handlerSignUp = (event) =>{
         hasUpper:/[A-Z]/.test(passwordEnter),
         hasNumber:/\d/.test(passwordEnter),
         hasSpecial:/[!@#$%^&*()-+.]/.test(passwordEnter),
-        isLongEnough:passwordEnter.length >= 8
+        isLongEnough:passwordEnter.length >= 6
     }
     const{hasLower,hasUpper,hasNumber,hasSpecial,isLongEnough} = checkPassword;
     if(!hasLower || !hasUpper || !hasNumber || !hasSpecial || !isLongEnough){
